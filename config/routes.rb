@@ -1,43 +1,41 @@
 Rails.application.routes.draw do
+
   namespace :admin do
-    get 'orders/show'
+    get 'admin/sign_in' => 'admin/sessions#new'
+    get '' => 'homes#top'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :items, except: [:destroy]
+    resources :orders, only: [:show]
+    resources :comments, only: [:destroy]
+
+
   end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+
+  scope module: :public do
+    get 'orders/confirm' => 'orders#confirm'
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
+    resources :orders, only: [:new, :create, :index, :show]
+
+    resources :cart_items, only: [:index, :update, :create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete 'cart_items/:id' => 'cart_items#destroy'
+
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/infomation/edit' => 'customers#edit'
+    patch 'customers/infomation' => 'customers#update'
+    get 'customers/check' => 'customers#check'
+    patch 'customers/withdraw' => 'customers#withdraw'
+
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+
+    post 'items/:item_id/comments' => 'comments#create', as: :comments
+    delete 'items/:item_id/comments/:id' => 'comments#destroy', as: :comment
+
+    resources :items, only: [:index, :show]
   end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/check'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'home/top'
-    get 'home/about'
-  end
+
   devise_for :customers, skip: [:password], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
