@@ -1,1 +1,29 @@
-<h1></h1>
+<div class="container">
+  <div class="row w-100 mx-auto mt-5">
+
+    <!--ジャンル検索欄を作る-->
+
+    <div class="col-7 mx-auto ">
+      <p>
+        ようこそ、Snowboardersへ！<br>
+        このサイトは、スノーボード用品販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要となります。
+      </p>
+    </div>
+  </div>
+
+  <h4>
+    <span>新着商品</span>
+  </h4>
+
+  <div class="row">
+    <% @item.each do |item| %>
+    <div class="col-3 mt-3">
+      <%= image_tag item.get_image(250,250) %><br>
+      <%= link_to item.name, item_path(item.id) %>
+      ¥<%= item.price %>
+    </div>
+    <% end %>
+  </div>
+</div>

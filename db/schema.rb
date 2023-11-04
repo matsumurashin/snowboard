@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2023_11_02_052729) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
+    t.string "size", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
