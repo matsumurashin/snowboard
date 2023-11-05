@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'genre/index'
-    get 'genre/edit'
-  end
-  namespace :admin do
-    get 'admin/sign_in' => 'admin/sessions#new'
+    get 'genres' => 'genre#index'
+    post 'genres' => 'genre#create'
+    get 'genre/:id' => 'genre#edit',as: :'genre/edit'
+    patch 'genre/:id' => 'genre#update',as: :'genre'
+    get 'sign_in' => 'sessions#new'
     get '' => 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, except: [:destroy]
     resources :orders, only: [:show]
     resources :comments, only: [:destroy]
-
-
   end
 
   scope module: :public do

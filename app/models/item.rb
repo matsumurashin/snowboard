@@ -1,5 +1,13 @@
 class Item < ApplicationRecord
   has_one_attached :image
+  
+  has_many :genres
+
+  # enum achieve_status: {nonachieve: 0, achieve: 1 }
+  
+  def with_tax_price
+      (price * 1.1).floor
+  end
 
   def get_image(width, height)
     unless image.attached?

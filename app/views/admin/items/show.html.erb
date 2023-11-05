@@ -1,2 +1,36 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h4>
+  <span class="bg-light">商品詳細</span>
+</h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @item.get_image(300,300) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <table cellpadding="5">
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= %></td>
+        </tr>
+        <tr>
+          <th>税込価格<br>(税抜価格)</th>
+          <td><%= @item.with_tax_price %>(<%= @item.price %>)円</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= link_to "編集する", edit_admin_item_path(@item.id), class: "mx-auto d-block btn btn-success mt-3" %>
