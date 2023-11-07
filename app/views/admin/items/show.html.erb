@@ -1,5 +1,5 @@
-<h4>
-  <span class="bg-light">商品詳細</span>
+<h4 class="mt-3 ml-3">
+  <span class="bg-light p-2">商品詳細</span>
 </h4>
 
 <div class="container">
@@ -22,11 +22,11 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td><%= %></td>
+          <td><%= @item.genre.genre_name %></td>
         </tr>
         <tr>
           <th>税込価格<br>(税抜価格)</th>
-          <td><%= @item.with_tax_price %>(<%= @item.price %>)円</td>
+          <td><%= @item.with_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
         </tr>
       </table>
     </div>

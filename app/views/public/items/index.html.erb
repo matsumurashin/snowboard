@@ -1,2 +1,23 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="border">ジャンル検索</div>
+      <% @genres.each do |genre| %>
+        <%= link_to genre.genre_name %><br>
+      <% end %>
+    </div>
+
+      <h4 class="mt-3 ml-3">
+        <span class="bg-light p-2"><%#= @genres.genre_name %>一覧</span>
+      </h4>
+
+    <% @items.each do |item| %>
+    <div class="col-md-3 mt-5 pl-3">
+      <%= link_to image_tag(item.get_image(200,200)), item_path(item.id) %><br>
+      <%= link_to item.name,item_path(item.id) %><br>
+      ¥<%= item.price %>
+    </div>
+    <% end %>
+  </div>
+  <%#= paginate @items %>
+</div>
