@@ -4,9 +4,26 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
-    <%= form_with model: @shipping_address, url: edit_shipping_address_path(@shipping_address.id) do |f| %>
-    <% end %>
+    <div class="col-md-12">
+      <table cellpadding="5">
+      <%= form_with model: @shipping_address, url: shipping_address_index_path do |f| %>
+        <tr>
+          <th><%= f.label :"郵便番号（ハイフンなし）", autofocus: true %></th>
+          <td><%= f.text_field :postal_code %></td>
+          <td class="w-50"></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"住所" %></th>
+          <td colspan="2"><%= f.text_field :address, class: "w-75", :placeholder => "東京都渋谷区代々木神園町0-0" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"宛名" %></th>
+          <td><%= f.text_field :name %></td>
+          <td></td>
+          <td><%= f.submit :"変更内容を保存", class: "btn btn-success" %></td>
+        </tr>
+      </table>
     </div>
+    <% end %>
   </div>
 </div>
