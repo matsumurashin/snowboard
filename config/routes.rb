@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :create, :index, :show]
 
-    resources :shipping_address, only: [:index, :create, :edit, :update]
+    resources :shipping_address, only: [:index, :create, :edit, :update, :destroy]
 
     resources :cart_items, only: [:index, :update, :create]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'

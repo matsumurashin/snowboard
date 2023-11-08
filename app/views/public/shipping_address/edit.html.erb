@@ -1,2 +1,12 @@
-<h1>Public::ShippingAddress#edit</h1>
-<p>Find me in app/views/public/shipping_address/edit.html.erb</p>
+<h4 class="mt-3 ml-3">
+  <span class="bg-light p-2">配送先編集</span>
+</h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+    <%= form_with model: @shipping_address, url: edit_shipping_address_path(@shipping_address.id) do |f| %>
+    <% end %>
+    </div>
+  </div>
+</div>
