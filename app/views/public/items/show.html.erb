@@ -31,7 +31,7 @@
           <p>数量を選択してください。</p>
           <%= f.select :amount, *[1..10] %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.submit "カートに入れる", class: "mx-auto d-block btn btn-success mt-3" %>
+          <%= f.submit :"カートに入れる", class: "mx-auto d-block btn btn-success mt-3" %>
         <% end %>
       </div>
       <div class="col-3 px-0">

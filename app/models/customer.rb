@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :shipping_address, dependent: :destroy
+
 def full_name
   self.first_name + " " + self.last_name
 end
