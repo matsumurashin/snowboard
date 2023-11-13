@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     patch 'genre/:id' => 'genre#update',as: :'genre'
     get 'sign_in' => 'sessions#new'
     get '' => 'homes#top'
+
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, except: [:destroy]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
     resources :comments, only: [:destroy]
   end
 
