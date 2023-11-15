@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+
+   before_action :cart_items_nil, only: [:new, :create]
+
   def new
    @order = Order.new
    @customer = current_customer
@@ -49,9 +52,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all.page(params[:page]).per(10).order('created_at DESC')
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order.shipping_fee = 800
+    @total = 0
+    @order_detail = OrderDetail.find(current_customer.id)
   end
 
   private

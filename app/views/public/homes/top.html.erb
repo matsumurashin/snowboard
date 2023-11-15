@@ -1,11 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <div class="border">ジャンル検索</div>
-      <% @genres.each do |genre| %>
-        <%= link_to genre.genre_name, items_path(genre_id: genre.id), class: "border" %><br>
-      <% end %>
-  </div>
+      <table class="border border-dark">
+        <tr class="border-bottom border-dark">
+          <th>ジャンル検索</th>
+        </tr>
+        <tr>
+          <td>
+          <% @genres.each do |genre| %>
+            <%= link_to genre.genre_name, items_path(genre_id: genre.id) %><br>
+          <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
 
     <div class="col-md-7 row w-100 mx-auto mt-5">
       <p>

@@ -37,10 +37,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
 
-    post 'items/:item_id/comments' => 'comments#create', as: :comments
-    delete 'items/:item_id/comments/:id' => 'comments#destroy', as: :comment
-
     resources :items, only: [:index, :show]
+
+    resources :items do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   devise_for :customers, skip: [:password], controllers: {

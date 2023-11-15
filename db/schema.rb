@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2023_11_05_055421) do
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
     t.string "comment", null: false
+    t.integer "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "star"
   end
 
   create_table "customers", force: :cascade do |t|

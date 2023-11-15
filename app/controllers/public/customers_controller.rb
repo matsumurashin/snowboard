@@ -4,16 +4,25 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(currnet_customer.id)
+    @customer = Customer.find(current_customer.id)
   end
-  
+
   def update
-    @customer = Customer.find(currnet_customer.id)
-    @customer.update(params_customer)
+    @customer = Customer.find(current_customer.id)
+    @customer.update(customer_params)
     redirect_to customers_mypage_path
   end
 
   def check
+    @customer = Customer.find(current_customer.id)
+  end
+
+  def withdraw
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private
