@@ -16,4 +16,14 @@ end
 def full_name_kana
   self.first_name_kana + " " + self.last_name_kana
 end
+
+def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "ゲスト"
+      customer.name_kana = "げすと"
+      customer.is_deleted = false
+    end
+end
+
 end

@@ -26,7 +26,7 @@ class Public::ShippingAddressController < ApplicationController
 
   def update
     @shipping_address = ShippingAddress.find(params[:id])
-    if @shipping_address.update(shipping_address.id)
+    if @shipping_address.update(shipping_address_params)
       redirect_to shipping_address_index_path
     else
       render 'index'

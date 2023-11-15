@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @item.each do |item| %>
+        <% @items.each do |item| %>
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
@@ -38,7 +38,7 @@
         <% end %>
         </tbody>
       </table>
-      <%= paginate @item %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

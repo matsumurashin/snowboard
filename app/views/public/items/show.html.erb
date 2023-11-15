@@ -1,10 +1,18 @@
 <div class="container mx-auto p-5">
   <div class="row">
     <div class="col-md-2">
-      <div class="border">ジャンル検索</div>
-      <% @genres.each do |genre| %>
-        <%= link_to genre.genre_name, items_path(genre_id: genre.id), class: "border" %><br>
-      <% end %>
+      <table class="border border-dark">
+        <tr class="border-bottom border-dark">
+          <th>ジャンル検索</th>
+        </tr>
+        <tr>
+          <td>
+          <% @genres.each do |genre| %>
+            <%= link_to genre.genre_name, items_path(genre_id: genre.id) %><br>
+          <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <div class="col-6 mx-auto">
@@ -38,14 +46,21 @@
     </div>
   </div>
 
-  <div class="row" >
-    <div class="col-md-10">
-    <%= form_with model:[@item, @comment], local: false do |f| %>
-       <%= f.text_area :comment, rows:'5',placeholder: "コメント記入欄", class:"form-control mt-3"  %>
-       <div class="text-right">
-      <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
-       </div>
-    <% end %>
+  <div class="row">
+    <div class="col-md-10 text-center">
+      <div>
+        <p>コメント件数：<%= @item.comments.count %></p>
+        <% @item.comments.each do |comment| %>
+          <%= comment.customer.name %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_with model: [@item, @comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
     </div>
   </div>
 
