@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'genres' => 'genre#create'
     get 'genre/:id' => 'genre#edit',as: :'genre/edit'
     patch 'genre/:id' => 'genre#update',as: :'genre'
-    get 'sign_in' => 'sessions#new'
+    # get 'sign_in' => 'sessions#new'
     get '' => 'homes#top'
 
     resources :customers, only: [:index, :show, :edit, :update]
