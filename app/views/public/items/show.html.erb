@@ -55,6 +55,9 @@
           <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
         <% end %>
       </div>
+
+      <%= render partial: "items/show_rate", locals: { item: @item } %>
+
       <div>
         <%= form_with model: [@item, @comment] do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>

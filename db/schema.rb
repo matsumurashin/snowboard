@@ -64,7 +64,11 @@ ActiveRecord::Schema.define(version: 2023_11_05_055421) do
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
     t.string "comment", null: false
-    t.integer "star", null: false
+    t.float "all_stars", default: 0.0, null: false
+    t.float "star1", default: 0.0, null: false
+    t.float "star2", default: 0.0, null: false
+    t.float "star3", default: 0.0, null: false
+    t.float "star4", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

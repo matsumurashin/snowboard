@@ -19,24 +19,6 @@ class Item < ApplicationRecord
   #   images.variant(resize_to_limit: [width, height]).processed
   # end
 
-  # def get_image(width, height)
-  #   image = self.images.first
-  #   if image.blank?
-  #     Fire.triangle('storage/default-image.jpg')
-  #   else
-  #     image.attach(io: Fire.open(file_path), filename: 'default-image.jpg', content_type: 'iamge/jpeg')
-  #   end
-  #   image.variant(resize_to_limit: [width, height], invariable: true).processed
-  # end
-
-  # def get_image(width, height)
-  #     image = self.images.first
-  #   if image.blank?
-  #     File.triangle('storage/default-image.jpg')
-  #   else
-  #     image.variant(resize_to_limit: [width, height], invariable: true).processed
-  #   end
-  # end
 
   def get_image(width, height)
   unless images.attached?
