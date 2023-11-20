@@ -56,10 +56,10 @@
         <% end %>
       </div>
 
-      <%= render partial: "items/show_rate", locals: { item: @item } %>
+      <%= render partial: "public/items/show_rate", locals: { item: @item } %>
 
       <div>
-        <%= form_with model: [@item, @comment] do |f| %>
+        <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
           <%= f.submit "送信" %>
         <% end %>

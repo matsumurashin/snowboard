@@ -1,0 +1,10 @@
+<%# 平均点を算出し、round関数で切り上げ %>
+<%= @all_stars %>：<%= @comments.average(:all_stars).to_f.round(1) %>
+<%# 評価数を星に置き換える %>
+ <div class="average-comment-star" data-score=<%= @comments.average(:all_stars) %>></div>
+
+<th class="table__col1">総合評価</th>
+ <td class="table__col1">  <div class="field" id="star"><% f.label :all_stars %></div></td>
+</tr>
+
+<%= render partial: "items/form_rate", locals: { item: @item } %>

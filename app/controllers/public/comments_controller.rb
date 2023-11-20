@@ -23,6 +23,8 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :star)
+    params.require(:comment).permit(:comment, :all_stars, :star1, :star2, :star3, :star4).merge(
+      customer_id: current_customer.id, item_id: params[:item_id]
+    )
   end
 end

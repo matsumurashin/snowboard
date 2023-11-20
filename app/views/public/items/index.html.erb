@@ -32,6 +32,9 @@
       <%= link_to image_tag(item.get_image(200,200)), item_path(item.id) %><br>
       <%= link_to item.name,item_path(item.id) %><br>
       ¥<%= item.price.to_s(:delimited) %>
+      <div class="average-comment-star" data-score=<%= item.comments.average(:all_stars) %>></div>
+　      <%= @all_stars %>：<%= item.comments.average(:all_stars).to_f.round(1) %>
+      </div>
     </div>
     <% end %>
   </div>

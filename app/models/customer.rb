@@ -20,8 +20,13 @@ end
 def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.name = "ゲスト"
+      customer.first_name = "ゲスト"
+      customer.last_name = "ゲスト"
+      customer.first_name = "げすと"
       customer.name_kana = "げすと"
+      customer.postal_code = "0000000"
+      customer.address = "abcd"
+      customer.telephone_number = "00000000000"
       customer.is_deleted = false
     end
 end

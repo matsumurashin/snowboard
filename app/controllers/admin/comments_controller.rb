@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
   def index
-    # @comments = １つのアイテムのコメント（複数会員）
+    @comments = Comment.all
   end
 end
