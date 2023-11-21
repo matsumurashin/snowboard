@@ -22,8 +22,8 @@ def self.guest
       customer.password = SecureRandom.urlsafe_base64
       customer.first_name = "ゲスト"
       customer.last_name = "ゲスト"
-      customer.first_name = "げすと"
-      customer.name_kana = "げすと"
+      customer.first_name_kana = "げすと"
+      customer.last_name_kana = "げすと"
       customer.postal_code = "0000000"
       customer.address = "abcd"
       customer.telephone_number = "00000000000"

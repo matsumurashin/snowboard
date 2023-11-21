@@ -10,6 +10,13 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    # flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to root_path
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -39,13 +46,6 @@ class Public::SessionsController < Devise::SessionsController
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
         redirect_to  new_customer_registration_path
     end
-  end
-
-  def guest_sign_in
-    customer = Customer.guest
-    sign_in customer
-    # flash[:notice] = "ゲストユーザーとしてログインしました。"
-    redirect_to root_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

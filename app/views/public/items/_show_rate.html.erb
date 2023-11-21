@@ -7,10 +7,11 @@
 <script>
 
   $('.average-comment-star').raty({
-    readOnly: true,
+    // readOnly: true,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'comment[all_stars]',
     score: function() {
       return $(this).attr('data-score')
     }

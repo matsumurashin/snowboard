@@ -7,11 +7,11 @@ class Public::ItemsController < ApplicationController
       @items = @items.where(genre_id: params[:genre_id])
     end
     @comments = Comment.all
-    # @all_stars = '総合評価'
-    # @star1 = '評価1'
-    # @star2 = '評価2'
-    # @star3 = '評価3'
-    # @star4 = '評価4'
+    @all_stars = '総合評価'
+    @star1 = '評価1'
+    @star2 = '評価2'
+    @star3 = '評価3'
+    @star4 = '評価4'
   end
 
   def show

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
-    resources :comments, only: [:destroy]
+    resources :comments, only: [:index, :destroy]
   end
 
   scope module: :public do

@@ -32,10 +32,21 @@
       <%= link_to image_tag(item.get_image(200,200)), item_path(item.id) %><br>
       <%= link_to item.name,item_path(item.id) %><br>
       ¥<%= item.price.to_s(:delimited) %>
-      <div class="average-comment-star" data-score=<%= item.comments.average(:all_stars) %>></div>
+      <div id="average-comment-star-<%= item.id %>" data-score=<%= item.comments.average(:all_stars) %>>
 　      <%= @all_stars %>：<%= item.comments.average(:all_stars).to_f.round(1) %>
       </div>
-    </div>
+  </div>
+    <script>
+      $('#average-comment-star-<%= item.id %>').raty({
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      score: function() {
+        return $(this).attr('data-score')
+      }
+      });
+    </script>
     <% end %>
   </div>
 
