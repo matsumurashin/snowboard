@@ -21,22 +21,22 @@ class Item < ApplicationRecord
 
 
   def get_image(width, height)
-  unless images.attached?
-    file_path = Rails.root.join('app/assets/images/snowboard.jpg')
-
-    # トランザクションの開始前にデータベースのロックを解除する
-    ActiveRecord::Base.connection.execute("COMMIT")
-
-    # トランザクション内での処理を行う
-    ActiveRecord::Base.transaction do
-      images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    unless images.attached?
+      file_path = Rails.root.join('app/assets/images/snowboard.jpg')
+  
+      # # トランザクションの開始前にデータベースのロックを解除する
+      # ActiveRecord::Base.connection.execute("COMMIT")
+  
+      # トランザクション内での処理を行う
+      ActiveRecord::Base.transaction do
+        images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      end
+  
+      # # トランザクションの終了後に再びデータベースをロックする
+      # ActiveRecord::Base.connection.execute("BEGIN TRANSACTION")
     end
-
-    # トランザクションの終了後に再びデータベースをロックする
-    ActiveRecord::Base.connection.execute("BEGIN TRANSACTION")
-  end
-
-  images.variant(resize_to_limit: [width, height]).processed
+  
+    images.variant(resize_to_limit: [width, height]).processed
   end
 
 end

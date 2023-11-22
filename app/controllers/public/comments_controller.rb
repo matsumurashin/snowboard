@@ -13,8 +13,15 @@ class Public::CommentsController < ApplicationController
   #   @item_comments = @item.comments
   # end
 
+  # def destroy
+  #   @item = Item.find(params[:id])
+  #   Comment.find(params[:id]).destroy
+  #   @item_comments = @item.comments
+  #   redirect_to item_path(@item.id)
+  # end
+
   def destroy
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
     Comment.find(params[:id]).destroy
     @item_comments = @item.comments
     redirect_to item_path(@item.id)

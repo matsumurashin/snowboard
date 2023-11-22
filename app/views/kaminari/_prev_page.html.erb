@@ -1,3 +1,7 @@
-<li class="page-item">
-  <%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, rel: 'prev', remote: remote, class: 'page-link' %>
-</li>
+<!--<li class="page-item">-->
+<!--  <%#= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, rel: 'prev', remote: remote, class: 'page-link' %>-->
+<!--</li>-->
+
+<button class="prev">
+  <%= link_to_unless current_page.first?, t('views.pagination.previous').html_safe, url, rel: 'prev', remote: remote %>
+</button>

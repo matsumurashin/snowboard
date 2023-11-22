@@ -50,20 +50,52 @@
     <div class="col-md-10 text-center">
       <div>
         <p>コメント件数：<%= @item.comments.count %></p>
-        <% @item.comments.each do |comment| %>
-          <%= comment.customer.first_name %><%= comment.customer.last_name %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-        <% end %>
-      </div>
-
-      <div>
-        <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
-        <%= render partial: "public/items/show_rate", locals: { item: @item } %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
-          <%= f.submit "送信" %>
-        <% end %>
+        <div>
+          <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
+          <%= render partial: "public/items/show_rate", locals: { item: @item } %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントを入力" %>
+            <%= f.submit "送信" %>
+          <% end %>
+        </div>
+        <%# @item.comments.each do |comment| %>
+          <%#= comment.customer.first_name %><%#= comment.customer.last_name %>
+          <%#= comment.created_at.strftime('%Y/%m/%d') %><%#= comment.comment %>
+        <%# end %>
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered mx-auto mt-5">
+        <thead class="bg-light border">
+          <tr>
+            <th scope="col">氏名</th>
+            <th scope="col">投稿日時</th>
+            <th scope="col">コメント</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <% @item.comments.each do |comment| %>
+        <tbody>
+          <tr>
+            <td><%= comment.customer.full_name %></td>
+            <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= comment.comment %></td>
+            <td>
+              <% if current_customer.id == comment.customer_id %>
+                <%= link_to "削除する", item_comment_path(@item, comment.id) ,method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+
+
+
 
 </div>
