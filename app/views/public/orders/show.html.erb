@@ -37,7 +37,7 @@
             <% @order.order_details.each do |order_detail| %>
               <% @total = order_detail.subtotal + @total %>
             <% end %>
-            <%= @total %>
+            <%= @total.to_s(:delimited) %>
           </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
           <th class="border border-dark bg-secondary">ご請求金額</th>
           <td class="border border-dark">
             <% @amount_billed = @total + @order.shipping_fee %>
-            <%= @amount_billed %>
+            <%= @amount_billed.to_s(:delimited) %>
           </td>
         </tr>
       </table>
@@ -68,9 +68,9 @@
         <% @order.order_details.each do |order_detail| %>
         <tbody>
           <td class="border border-dark"><%= order_detail.item.name %></td>
-          <td class="border border-dark"><%= order_detail.item.with_tax_price %></td>
+          <td class="border border-dark"><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
           <td class="border border-dark"><%= order_detail.amount %></td>
-          <td class="border border-dark"><%= order_detail.subtotal %></td>
+          <td class="border border-dark"><%= order_detail.subtotal.to_s(:delimited) %></td>
         </tbody>
         <% end %>
       </table>

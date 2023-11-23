@@ -52,9 +52,9 @@
         <% @order.order_details.each do |order_detail| %>
         <tbody>
           <td class="border bordered"><%= order_detail.item.name %></td>
-          <td class="border bordered"><%= order_detail.item.with_tax_price %></td>
+          <td class="border bordered"><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
           <td class="border bordered"><%= order_detail.amount %></td>
-          <td class="border bordered"><%= order_detail.subtotal %></td>
+          <td class="border bordered"><%= order_detail.subtotal.to_s(:delimited) %></td>
           <td>
           <%= form_with model:order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
             <%= f.select :making_status, ["着手不可", "制作待ち","製作中","制作完了"] %>
@@ -74,7 +74,7 @@
             <% @order.order_details.each do |order_detail| %>
               <% @total = order_detail.subtotal + @total %>
             <% end %>
-            <%= @total %>円
+            <%= @total.to_s(:delimited) %>円
           </td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@
           <th class="border bordered">請求合計金額</th>
           <td class="border bordered">
             <% @total_price = @total + @order.shipping_fee %>
-            <%= @total_price %>円
+            <%= @total_price.to_s(:delimited) %>円
           </td>
         </tr>
       </table>

@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
     @genres = Genre.all
-    @items = Item.all.page(params[:page]).per(10)
+    @items = Item.all.page(params[:page]).per(12)
     if params[:genre_id].present?
       @genre = Genre.find(params[:genre_id])
       @items = @items.where(genre_id: params[:genre_id])

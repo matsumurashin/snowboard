@@ -33,7 +33,7 @@
       <%= link_to item.name,item_path(item.id) %><br>
       ¥<%= item.price.to_s(:delimited) %>
       <div id="average-comment-star-<%= item.id %>" data-score=<%= item.comments.average(:all_stars) %>>
-　      <%= @all_stars %>：<%= item.comments.average(:all_stars).to_f.round(1) %>
+　      <%= @all_stars %>：<%= item.comments.average(:all_stars) %>
       </div>
   </div>
     <script>
