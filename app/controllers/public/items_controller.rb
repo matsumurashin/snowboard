@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @genres = Genre.all
     @items = Item.all.page(params[:page]).per(12)
@@ -26,20 +27,6 @@ class Public::ItemsController < ApplicationController
     @star3 = '評価3'
     @star4 = '評価4'
   end
-
-  # def create
-  #   @item = Item.find(params[:item_id])
-  #   @comment = current_customer.comments.new(comment_params)
-  #   @comment.item_id = @item.id
-  #   @comment.save
-  #   redirect_to item_path(@item.id)
-  # end
-
-  # def destroy
-  #   @item = Item.find(params[:item_id])
-  #   Comment.find_by(id: params[:id], item_id: params[:item_id]).destroy
-  #   @item_comments = @item.comments
-  # end
 
   def destroy
     @item = Item.find(params[:id])

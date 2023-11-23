@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-
+  before_action :authenticate_customer!
   before_action :cart_items_nil, only: [:new, :create]
 
   def new
