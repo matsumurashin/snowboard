@@ -37,11 +37,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
 
-    resources :items, only: [:index, :show]
-
-    resources :items do
+    resources :items, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
     end
+
   end
 
   devise_for :customers, skip: [:password], controllers: {
