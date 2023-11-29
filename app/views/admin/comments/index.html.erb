@@ -1,10 +1,9 @@
 <ul>
 <% @comments.each do | comment | %>
   <li class="row">
-    <p class="col-4"><%= comment.customer.full_name %></p>
-    <p class="col-8"><%= comment.comment %></p>
+    <p class="col-3 border bordered w-100"><%= comment.customer.full_name %></p>
+    <p class="col-7 border bordered w-100"><%= comment.comment %></p>
+    <p class="col-2 border bordered w-100"><%= link_to "削除する", admin_comment_path(comment.id) ,method: :delete, class: "btn btn-danger" %></p>
   </li>
-
-<%= link_to "削除する", admin_comment_path(comment.id) ,method: :delete, class: "btn btn-danger" %>
 <% end %>
 </ul>
