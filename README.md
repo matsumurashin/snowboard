@@ -26,7 +26,10 @@
 ・どのようなものがあるのかみ見てみたい時
 ​
 ## 設計書
-後ほど作成予定
+・ER図 URL: https://app.diagrams.net/#G17saHL6uXTBy6I_8It-2glXA6e-E7oW9l 
+・テーブル定義書 URL: https://docs.google.com/spreadsheets/d/1cUiogUV7gFQzyIo2mYR8pYGC-fLUfR1mqgytfU3oKSI/edit#gid=1243549839 
+・詳細設計 URL: https://docs.google.com/spreadsheets/d/1Bfz9oaIXKRgA76EYr4bEyLLYsxhKdJ7LG5kjlUDErts/edit#gid=549108681
+・テスト仕様書 URL: https://docs.google.com/spreadsheets/d/14PbeBqaAe9dvuV2mjNETaq5fdc8ENaRE/edit#gid=547097470
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,8 +37,6 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-​
-## 使用素材
 
 ## 実装機能リスト
 - https://docs.google.com/spreadsheets/d/1hQpYECrZ7wA1n_il9et-SI-iCXwhoPFap11dP0yOysQ/edit?usp=sharing
