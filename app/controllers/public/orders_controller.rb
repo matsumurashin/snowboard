@@ -62,7 +62,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.shipping_fee = 800
     @total = 0
-    @order_detail = OrderDetail.find(current_customer.id)
+    @order_detail = @order.order_details
   end
 
   private

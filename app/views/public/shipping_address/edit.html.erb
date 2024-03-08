@@ -5,8 +5,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <table cellpadding="5">
       <%= form_with model: @shipping_address, url: shipping_address_path do |f| %>
+      <table cellpadding="5">
         <tr>
           <th><%= f.label :"郵便番号（ハイフンなし）", autofocus: true %></th>
           <td><%= f.text_field :postal_code %></td>
@@ -23,7 +23,7 @@
           <td><%= f.submit :"変更内容を保存", class: "btn btn-success" %></td>
         </tr>
       </table>
-    </div>
     <% end %>
+    </div>
   </div>
 </div>
